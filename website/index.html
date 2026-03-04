@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Grassroot Hopper — Hopping across open-source projects to build what communities need.</title>
-<meta name="description" content="Grassroot Hopper is a movement: assembling the best open-source tools into community-owned social networks. Forkable. Cooperative. City by city.">
+<title>Grassroot Hopper — The open source social network that makes you more social.</title>
+<meta name="description" content="The first forkable local coop social network, owned and co-created by the communities that use it. Open source. Cooperative. City by city.">
 <meta property="og:title" content="Grassroot Hopper">
-<meta property="og:description" content="Hopping across open-source projects to build what communities actually need. The first product: a forkable local social network, owned by the people who use it.">
+<meta property="og:description" content="The open source social network that makes you more social. The first forkable local coop social network, owned and co-created by the communities that use it.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://grassroothopper.com">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -124,7 +124,7 @@
     text-transform: uppercase;
     color: var(--dark-muted);
     opacity: 0.45;
-    margin-top: 3rem;
+    margin-bottom: 1.5rem;
   }
 
   .scroll-cue {
@@ -189,6 +189,11 @@
     border: 1px solid rgba(245,240,230,0.08);
   }
 
+  .light .persona {
+    background: rgba(26,23,20,0.03);
+    border: 1px solid rgba(26,23,20,0.08);
+  }
+
   .persona-role {
     font-family: var(--font-display);
     font-size: 1.15rem;
@@ -198,6 +203,7 @@
   }
 
   .dark .persona-role { color: var(--dark-accent); }
+  .light .persona-role { color: var(--light-accent); }
 
   .persona-desc {
     font-size: 0.92rem;
@@ -205,6 +211,7 @@
   }
 
   .dark .persona-desc { color: var(--dark-muted); }
+  .light .persona-desc { color: var(--light-muted); }
 
   /* ---------- COMMUNITY FLOW ---------- */
   .comm-flow {
@@ -403,9 +410,9 @@
 <!-- HERO -->
 <section class="slide dark">
   <div class="hero-wrap">
+    <p class="hero-meta">Grassroot Hoppers presents</p>
     <h1>Grassroot<br>Hopper</h1>
-    <p class="hero-tagline">Hopping across open-source projects to build what communities actually need. The first product: a forkable local social network, owned by the people who use it.</p>
-    <p class="hero-meta">Open Source &middot; Cooperative &middot; Forkable &middot; City by City</p>
+    <p class="hero-tagline">The open source social network that makes you more social.<br>The first forkable local coop social network, owned and co-created by the communities that use it.</p>
   </div>
   <div class="scroll-cue">
     <span>Scroll</span>
@@ -413,42 +420,65 @@
   </div>
 </section>
 
-<!-- 01 — WHAT IS GRASSROOT HOPPING -->
+<!-- 01 — WHO ARE GRASSROOT HOPPERS -->
 <section class="slide light">
   <div class="slide-inner reveal">
     <div class="slide-num">01</div>
-    <h2>What is <span class="accent">grassroot hopping?</span></h2>
-    <p class="sub">All over the world, people are building open-source alternatives to the platforms that run our lives. Cooperative delivery apps. Community-owned music streaming. Federated social networks. Open-source event tools.</p>
-    <p class="sub strong">Grassroot hopping is the act of taking the best of what already exists and assembling it into something communities can own. Not building everything from scratch &mdash; catching everything that's already being built.</p>
+    <h2>Who are <span class="accent">Grassroot Hoppers?</span></h2>
+    <p class="sub strong">Hopping across open-source projects to build what communities actually need.</p>
+    <p class="sub">All over the world, people are building open-source alternatives to the platforms that run our lives and make billions selling our attention. Cooperative delivery apps. Community-owned music streaming. Federated social networks. Open-source event tools.</p>
+    <p class="sub strong">Grassroot hopping is the act of taking the best of what exists, co-building what's needed, and leading, advocating, and driving even more open source alternatives. Then assembling it into something communities can use and own.</p>
+    <p class="sub">Not building everything from scratch &mdash; catching everything that's being built. Hopping from grassroots repos to grassroots repos.</p>
   </div>
 </section>
 
-<!-- 02 — THE FIRST PRODUCT -->
+<!-- 02 — THE FIRST IDEA -->
 <section class="slide dark">
   <div class="slide-inner reveal">
     <div class="slide-num">02</div>
-    <h2>The first product: a local social network <span class="accent">owned by its members.</span></h2>
+    <h2>The first idea: a local social network <span class="accent">owned by its members.</span></h2>
     <p class="sub">Imagine a social network for your city &mdash; but without the corporation behind it. No ads, no algorithm, no data harvesting. Just the creative people in your neighborhood and the events happening around you.</p>
-    <p class="sub">You join through a community you already belong to &mdash; your dance scene, your art class, your coworking space, your running club. Through that community, you discover the hidden creative lives of the people you already know.</p>
-    <p class="sub strong">The Brussels network is the first. The code is open source. Any city can fork it and start their own. The name gets decided by the cooperative members &mdash; because they own it.</p>
+    <p class="sub strong">No noise, no complaining. It's about art, creativity, classes, common hobbies, projects to join.</p>
   </div>
 </section>
 
-<!-- 03 — THE SCENARIO -->
+<!-- 03 — JOIN THROUGH YOUR COMMUNITY -->
 <section class="slide light">
   <div class="slide-inner reveal">
     <div class="slide-num">03</div>
-    <h2>Here's what it actually looks like.</h2>
-    <p class="sub">You go to a Lindy Hop social on a Thursday night. Someone holds up a QR code and says the password out loud. You scan it on your phone. Pick a username. You're in.</p>
-    <p class="sub">You scroll through the community and see only familiar faces. The woman you dance with every week? She's a painter. The guy who runs the Sunday social? He writes poetry. The couple who teach beginner workshops? They organize indie film screenings.</p>
-    <p class="sub strong">There's no comment button. No way to message them through the app. It's purposefully slow &mdash; near-analog. You see their art, and then you wait until the next social to walk up and say: &ldquo;I love your last pictures.&rdquo; Or you send them a postcard. The connection happens in real life, at human speed.</p>
+    <h2>You join through a community you already belong to &mdash; <span class="accent">physically.</span></h2>
+    <p class="sub">Your dance scene, your art class, your coworking space, your running club. That community hosts its events on the network. They invite you through a QR code.</p>
+    <p class="sub">Through that community, you have access to events &mdash; but you also have access to the personal blogs of the other members who felt like becoming a &ldquo;creator,&rdquo; a co-owner of the entire platform. They curate their own blog &mdash; be it poetry essays, a newsletter about flea markets, a photography portfolio.</p>
+    <p class="sub strong">All of a sudden, familiar faces give you access to their art. In one place, you've got all your events, all your communities, access to all the blogs of your fellow members. And suggestions like: a poetry club hosted by that guy from your running club who you didn't know until today writes great poetry.</p>
   </div>
 </section>
 
-<!-- 04 — WHO IT'S FOR -->
+<!-- 04 — WHAT IT LOOKS LIKE -->
 <section class="slide dark">
   <div class="slide-inner reveal">
     <div class="slide-num">04</div>
+    <h2>Here's what it actually looks like.</h2>
+    <div class="comm-flow">
+      <div class="comm-step stagger">
+        <span class="comm-icon">&rarr;</span>
+        <p class="comm-text">You go to a Lindy Hop social on a Thursday night. Someone holds up a QR code and says the password out loud.</p>
+      </div>
+      <div class="comm-step stagger">
+        <span class="comm-icon">&rarr;</span>
+        <p class="comm-text">You scan it on your phone. Write the spoken password. Pick a username. Upload a photo.</p>
+      </div>
+      <div class="comm-step stagger">
+        <span class="comm-icon">&rarr;</span>
+        <p class="comm-text"><strong>You're in.</strong> A &ldquo;reader.&rdquo; No blog, no fees. That's it.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 05 — WHO IT'S FOR -->
+<section class="slide light">
+  <div class="slide-inner reveal">
+    <div class="slide-num">05</div>
     <h2>Who is this <span class="accent">great for?</span></h2>
     <div class="personas">
       <div class="persona stagger">
@@ -479,10 +509,10 @@
   </div>
 </section>
 
-<!-- 05 — THE FLYWHEEL -->
-<section class="slide light">
+<!-- 06 — THE FLYWHEEL -->
+<section class="slide dark">
   <div class="slide-inner reveal">
-    <div class="slide-num">05</div>
+    <div class="slide-num">06</div>
     <h2>How a painter fills a gallery <span class="accent">without a single ad.</span></h2>
     <div class="comm-flow">
       <div class="comm-step stagger">
@@ -510,10 +540,10 @@
   </div>
 </section>
 
-<!-- 06 — HOW A COMMUNITY WORKS -->
-<section class="slide dark">
+<!-- 07 — HOW A COMMUNITY WORKS -->
+<section class="slide light">
   <div class="slide-inner reveal">
-    <div class="slide-num">06</div>
+    <div class="slide-num">07</div>
     <h2>How a community works.</h2>
     <div class="comm-flow">
       <div class="comm-step stagger">
@@ -540,10 +570,41 @@
   </div>
 </section>
 
-<!-- 07 — WHAT WE DON'T BUILD -->
+<!-- 08 — THE RILKE GATE -->
+<section class="slide dark" style="text-align:center;">
+  <div class="slide-inner reveal" style="max-width:700px;margin:0 auto;">
+    <div class="slide-num">08</div>
+    <p class="quote-text">&ldquo;I want to be with those who know secret things or else alone.&rdquo;</p>
+    <span class="quote-cite">&mdash; Rainer Maria Rilke, Book of Hours</span>
+    <p class="sub" style="margin:3rem auto 0;text-align:center;max-width:520px;">No bots can enter. No scrapers. No fake accounts. No shameless influencers. No creeps. You showed up at the community events &mdash; that's how you got in.</p>
+  </div>
+</section>
+
+<!-- 09 — UNDER THE HOOD -->
 <section class="slide light">
   <div class="slide-inner reveal">
-    <div class="slide-num">07</div>
+    <div class="slide-num">09</div>
+    <h2>Under the hood.</h2>
+    <p class="sub">It's just personal blogs behind a community gate, plus an event calendar. That's why it's simple enough for anyone to run &mdash; and why any city can fork it and start their own.</p>
+    <p class="sub strong">The secret sauce is the constant use of open source tools to make the social network &mdash; and the associated coop structure &mdash; easy to run, own, maintain, modify, and duplicate.</p>
+  </div>
+</section>
+
+<!-- 10 — COOPERATIVE / FORKABLE -->
+<section class="slide dark">
+  <div class="slide-inner reveal">
+    <div class="slide-num">10</div>
+    <h2>You're not a user.<br>You're a <span class="accent">co-owner.</span></h2>
+    <p class="sub">The Brussels network is the first. The code is open source. Any city can fork it and start their own.</p>
+    <p class="sub">The name gets decided by the cooperative founding members &mdash; and can be changed through a vote &mdash; because they own it.</p>
+    <p class="sub strong">The coop's decisions are managed through open source cooperative governance platforms. Making being an active member of the coop easy and rewarding.</p>
+  </div>
+</section>
+
+<!-- 11 — WHAT WE DON'T BUILD -->
+<section class="slide light">
+  <div class="slide-inner reveal">
+    <div class="slide-num">11</div>
     <h2>What we <span class="accent">don't</span> build</h2>
     <div class="nopes">
       <span class="nope stagger">Comments</span>
@@ -556,36 +617,14 @@
       <span class="nope stagger">Algorithms</span>
     </div>
     <p class="sub" style="margin-top:2.5rem;">If you want to tell someone their work is amazing, you tell them in person. That's not a limitation &mdash; it's the entire point.</p>
-    <p class="sub strong">Under the hood, it's just personal blogs behind a community gate, plus an event calendar. That's why it's simple enough for anyone to run &mdash; and why any city can fork it and start their own.</p>
   </div>
 </section>
 
-<!-- 08 — THE RILKE GATE -->
-<section class="slide dark" style="text-align:center;">
-  <div class="slide-inner reveal" style="max-width:700px;margin:0 auto;">
-    <div class="slide-num">08</div>
-    <p class="quote-text">&ldquo;I want to be alone. I want to be with people who know secret things or are also alone.&rdquo;</p>
-    <span class="quote-cite">&mdash; Rainer Maria Rilke, Letters to a Young Poet</span>
-    <p class="sub" style="margin:3rem auto 0;text-align:center;max-width:520px;">A secret password, spoken in person. Never written down. Not in any app, not in any message. No bots can enter. No scrapers. No fake accounts. You were there &mdash; that's the only credential that matters.</p>
-  </div>
-</section>
-
-<!-- 09 — COOPERATIVE / FORKABLE -->
-<section class="slide light">
-  <div class="slide-inner reveal">
-    <div class="slide-num">09</div>
-    <h2>You're not a user.<br>You're a <span class="accent">co-owner.</span></h2>
-    <p class="sub">Each city's social network is a cooperative. You're on the register. You vote on decisions. Creators, readers, event planners, devs &mdash; each with a voice proportional to their stake.</p>
-    <p class="sub">The code is open source. If a poetry community in Lisbon wants their own, they fork it. A dog owners' group in Amsterdam? They fork it. A neighborhood collective in Ghent? Fork it.</p>
-    <p class="sub strong">Grassroot Hopper builds the skeleton. Communities put the flesh on it. Starting with the Lindy Hop community in Brussels &mdash; building the community before building the technology.</p>
-  </div>
-</section>
-
-<!-- 10 — GET INVOLVED -->
+<!-- 12 — GET INVOLVED -->
 <section class="slide dark">
   <div class="slide-inner reveal" style="text-align:center;max-width:600px;margin:0 auto;">
-    <div class="slide-num">10</div>
-    <h2>If this made your eyes light up &mdash; you're one of us.</h2>
+    <div class="slide-num">12</div>
+    <h2>If this made your eyes light up &mdash; <span class="accent">you're one of us.</span></h2>
     <p class="sub" style="margin:1.5rem auto 0;text-align:center;">Whether you want to join the movement, build tools, start a community in your city, or just talk about it over coffee.</p>
     <div class="cta-row">
       <a href="mailto:staycreative@julien.care" class="btn btn-fill">Email Julien</a>
