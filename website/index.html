@@ -229,10 +229,12 @@
   }
 
   .light .comm-icon { color: var(--light-accent); }
+  .dark .comm-icon { color: var(--dark-accent); }
 
   .comm-text { font-size: 1.05rem; line-height: 1.65; }
   .comm-text strong { font-weight: 600; }
   .light .comm-text { color: var(--light-fg); }
+  .dark .comm-text { color: var(--dark-fg); }
 
   /* ---------- NOPE LIST ---------- */
   .nopes {
@@ -246,11 +248,20 @@
     font-family: var(--font-mono);
     font-size: 0.82rem;
     padding: 0.55rem 1.1rem;
-    border: 1px solid rgba(245,240,230,0.12);
     border-radius: 100px;
     text-decoration: line-through;
+  }
+
+  .dark .nope {
+    border: 1px solid rgba(245,240,230,0.12);
     text-decoration-color: rgba(245,240,230,0.35);
     color: var(--dark-muted);
+  }
+
+  .light .nope {
+    border: 1px solid rgba(26,23,20,0.12);
+    text-decoration-color: rgba(26,23,20,0.35);
+    color: var(--light-muted);
   }
 
   .stagger { opacity: 0; }
@@ -292,6 +303,7 @@
   }
 
   .light .quote-cite { color: var(--light-muted); }
+  .dark .quote-cite { color: var(--dark-muted); }
 
   /* ---------- CTAs ---------- */
   .cta-row {
@@ -313,24 +325,43 @@
     transition: all 0.2s ease;
   }
 
-  .btn-fill {
+  .light .btn-fill {
     background: var(--light-accent);
     color: #fff;
     border: 2px solid var(--light-accent);
   }
 
-  .btn-fill:hover {
+  .light .btn-fill:hover {
     background: transparent;
     color: var(--light-accent);
   }
 
-  .btn-outline {
+  .dark .btn-fill {
+    background: var(--dark-accent);
+    color: var(--dark-bg);
+    border: 2px solid var(--dark-accent);
+  }
+
+  .dark .btn-fill:hover {
+    background: transparent;
+    color: var(--dark-accent);
+  }
+
+  .light .btn-outline {
     background: transparent;
     color: var(--light-fg);
     border: 2px solid rgba(26,23,20,0.18);
   }
 
-  .btn-outline:hover { border-color: var(--light-fg); }
+  .light .btn-outline:hover { border-color: var(--light-fg); }
+
+  .dark .btn-outline {
+    background: transparent;
+    color: var(--dark-fg);
+    border: 2px solid rgba(245,240,230,0.18);
+  }
+
+  .dark .btn-outline:hover { border-color: var(--dark-fg); }
 
   /* ---------- FOOTER ---------- */
   footer {
@@ -339,11 +370,11 @@
     font-family: var(--font-mono);
     font-size: 0.7rem;
     letter-spacing: 0.06em;
-    color: var(--light-muted);
-    background: var(--light-bg);
+    color: var(--dark-muted);
+    background: var(--dark-bg);
   }
 
-  footer a { color: var(--light-accent); text-decoration: none; }
+  footer a { color: var(--dark-accent); text-decoration: none; }
 
   /* ---------- REVEAL ---------- */
   .reveal {
@@ -408,9 +439,9 @@
   <div class="slide-inner reveal">
     <div class="slide-num">03</div>
     <h2>Here's what it actually looks like.</h2>
-    <p class="sub">You go to a Lindy Hop social on a Thursday night. Someone holds up a QR code and says the password out loud. You scan it on your phone. Pick a username. And just like that &mdash; you're in.</p>
+    <p class="sub">You go to a Lindy Hop social on a Thursday night. Someone holds up a QR code and says the password out loud. You scan it on your phone. Pick a username. You're in.</p>
     <p class="sub">You scroll through the community and see only familiar faces. The woman you dance with every week? She's a painter. The guy who runs the Sunday social? He writes poetry. The couple who teach beginner workshops? They organize indie film screenings.</p>
-    <p class="sub strong">Next time you see them, you walk up and say: &ldquo;I love your last pictures.&rdquo; That's the only feedback that exists. Real words, face to face.</p>
+    <p class="sub strong">There's no comment button. No way to message them through the app. It's purposefully slow &mdash; near-analog. You see their art, and then you wait until the next social to walk up and say: &ldquo;I love your last pictures.&rdquo; Or you send them a postcard. The connection happens in real life, at human speed.</p>
   </div>
 </section>
 
@@ -426,15 +457,15 @@
       </div>
       <div class="persona stagger">
         <div class="persona-role">Creators</div>
-        <div class="persona-desc">Artists, photographers, writers, musicians &mdash; you get a personal blog seen by 100% of your community. No algorithm to fight. No self-promotion hamster wheel.</div>
+        <div class="persona-desc">You're a painter who also runs with a club, takes dance classes, and goes to poetry nights. You're visible in all three communities. People who already know your face see your art &mdash; and become real fans. They buy you a coffee. They buy a print. No algorithm needed. You thrive by simply being connected.</div>
       </div>
       <div class="persona stagger">
         <div class="persona-role">Event planners</div>
-        <div class="persona-desc">Your events are listed in the community calendar &mdash; the single source of truth. People come for the calendar and discover the creators. You handle tickets your way.</div>
+        <div class="persona-desc">Your events are listed in the community calendar &mdash; the single source of truth for &ldquo;what's happening this week.&rdquo; People come for the calendar and discover the creators. You handle tickets your way.</div>
       </div>
       <div class="persona stagger">
         <div class="persona-role">Galleries &amp; cinemas</div>
-        <div class="persona-desc">You see who actually has a community nearby. Program events based on real signal, not follower counts. 500 real people who would show up beats 10,000 bots.</div>
+        <div class="persona-desc">You invite a painter to exhibit. She's in three communities. Every one of them lights up: &ldquo;One of our members is exhibiting!&rdquo; Your gallery fills with visitors who already know and care about the artist. Real engagement, not ad spend.</div>
       </div>
       <div class="persona stagger">
         <div class="persona-role">Workshops &amp; classes</div>
@@ -448,10 +479,41 @@
   </div>
 </section>
 
-<!-- 05 — HOW A COMMUNITY WORKS -->
+<!-- 05 — THE FLYWHEEL -->
 <section class="slide light">
   <div class="slide-inner reveal">
     <div class="slide-num">05</div>
+    <h2>How a painter fills a gallery <span class="accent">without a single ad.</span></h2>
+    <div class="comm-flow">
+      <div class="comm-step stagger">
+        <span class="comm-icon">&rarr;</span>
+        <p class="comm-text">Clara is a painter. She also takes dance classes, joins a running club, and goes to poetry nights. She's a member of all three communities.</p>
+      </div>
+      <div class="comm-step stagger">
+        <span class="comm-icon">&rarr;</span>
+        <p class="comm-text">People in those communities see her paintings on her blog. They already know her face &mdash; they've danced with her, run with her, sat next to her. They become genuine fans.</p>
+      </div>
+      <div class="comm-step stagger">
+        <span class="comm-icon">&rarr;</span>
+        <p class="comm-text">A gallery invites Clara to exhibit. She posts about it on her blog.</p>
+      </div>
+      <div class="comm-step stagger">
+        <span class="comm-icon">&rarr;</span>
+        <p class="comm-text">Every community she's part of lights up: <strong>&ldquo;One of our members is exhibiting at Gallery X!&rdquo;</strong> The runners see it. The dancers see it. The poetry group sees it.</p>
+      </div>
+      <div class="comm-step stagger">
+        <span class="comm-icon">&rarr;</span>
+        <p class="comm-text">The gallery fills with visitors who actually know Clara and care about her work. Not strangers who clicked an ad &mdash; real people with a real connection.</p>
+      </div>
+    </div>
+    <p class="sub strong">This is how the network creates value. Not through algorithms &mdash; through the fact that real people in real communities naturally amplify the creative lives of people they already know.</p>
+  </div>
+</section>
+
+<!-- 06 — HOW A COMMUNITY WORKS -->
+<section class="slide dark">
+  <div class="slide-inner reveal">
+    <div class="slide-num">06</div>
     <h2>How a community works.</h2>
     <div class="comm-flow">
       <div class="comm-step stagger">
@@ -478,10 +540,10 @@
   </div>
 </section>
 
-<!-- 06 — WHAT WE DON'T BUILD -->
-<section class="slide dark">
+<!-- 07 — WHAT WE DON'T BUILD -->
+<section class="slide light">
   <div class="slide-inner reveal">
-    <div class="slide-num">06</div>
+    <div class="slide-num">07</div>
     <h2>What we <span class="accent">don't</span> build</h2>
     <div class="nopes">
       <span class="nope stagger">Comments</span>
@@ -498,20 +560,20 @@
   </div>
 </section>
 
-<!-- 07 — THE RILKE GATE -->
-<section class="slide light" style="text-align:center;">
+<!-- 08 — THE RILKE GATE -->
+<section class="slide dark" style="text-align:center;">
   <div class="slide-inner reveal" style="max-width:700px;margin:0 auto;">
-    <div class="slide-num">07</div>
+    <div class="slide-num">08</div>
     <p class="quote-text">&ldquo;I want to be alone. I want to be with people who know secret things or are also alone.&rdquo;</p>
     <span class="quote-cite">&mdash; Rainer Maria Rilke, Letters to a Young Poet</span>
-    <p class="sub" style="margin:3rem auto 0;text-align:center;max-width:520px;">The secret password is spoken in person. Never written down. Not in any app, not in any message. No bots can enter. No scrapers. No fake accounts. You were there &mdash; that's the only credential that matters.</p>
+    <p class="sub" style="margin:3rem auto 0;text-align:center;max-width:520px;">A secret password, spoken in person. Never written down. Not in any app, not in any message. No bots can enter. No scrapers. No fake accounts. You were there &mdash; that's the only credential that matters.</p>
   </div>
 </section>
 
-<!-- 08 — COOPERATIVE / FORKABLE -->
-<section class="slide dark">
+<!-- 09 — COOPERATIVE / FORKABLE -->
+<section class="slide light">
   <div class="slide-inner reveal">
-    <div class="slide-num">08</div>
+    <div class="slide-num">09</div>
     <h2>You're not a user.<br>You're a <span class="accent">co-owner.</span></h2>
     <p class="sub">Each city's social network is a cooperative. You're on the register. You vote on decisions. Creators, readers, event planners, devs &mdash; each with a voice proportional to their stake.</p>
     <p class="sub">The code is open source. If a poetry community in Lisbon wants their own, they fork it. A dog owners' group in Amsterdam? They fork it. A neighborhood collective in Ghent? Fork it.</p>
@@ -519,10 +581,10 @@
   </div>
 </section>
 
-<!-- 09 — GET INVOLVED -->
-<section class="slide light">
+<!-- 10 — GET INVOLVED -->
+<section class="slide dark">
   <div class="slide-inner reveal" style="text-align:center;max-width:600px;margin:0 auto;">
-    <div class="slide-num">09</div>
+    <div class="slide-num">10</div>
     <h2>If this made your eyes light up &mdash; you're one of us.</h2>
     <p class="sub" style="margin:1.5rem auto 0;text-align:center;">Whether you want to join the movement, build tools, start a community in your city, or just talk about it over coffee.</p>
     <div class="cta-row">

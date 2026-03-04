@@ -155,11 +155,12 @@ A secret message to enter a community you deserve to be part of. That's the bran
 ## Core Principles (non-negotiable)
 
 1. **No reactions. No comments. No likes. Ever.** You post your work. People see it. If they want to tell you it's amazing, they tell you in person. The only dopamine is real. This is not a limitation — it's the entire point.
-2. **Cooperative ownership.** Each city's Grassroot Hopper is a cooperative (SC). Members vote by class: creators, readers, event planners, devs — each with weighted power.
-3. **No money on the platform.** The platform shows the work. Business happens between humans, with whatever tools they choose. The cooperative advises on good tools but doesn't handle transactions.
-4. **Community-first.** You join through a community you already belong to. No browse. No discover page. QR code + secret password, spoken in person.
-5. **Open-source. Aggregate, don't build.** The code is public. If someone else already built a great tool, integrate it. Don't reinvent.
-6. **Anyone can start one.** A QR code, a community name, a few creators. That's it.
+2. **Near-analog. Purposefully slow.** The network is not designed for instant digital interaction. You see someone's art — then you wait until you see them in person to talk about it. Or you contact them through channels you already have: their phone number, a letter, a postcard. The platform creates discovery. Everything else happens at human speed, in the real world.
+3. **Cooperative ownership.** Each city's Grassroot Hopper is a cooperative (SC). Members vote by class: creators, readers, event planners, devs — each with weighted power.
+4. **No money on the platform.** The platform shows the work. Business happens between humans, with whatever tools they choose. The cooperative advises on good tools but doesn't handle transactions.
+5. **Community-first.** You join through a community you already belong to. No browse. No discover page. QR code + secret password, spoken in person.
+6. **Open-source. Aggregate, don't build.** The code is public. If someone else already built a great tool, integrate it. Don't reinvent.
+7. **Anyone can start one.** A QR code, a community name, a few creators. That's it.
 
 ---
 
@@ -304,6 +305,19 @@ The foundational unit. A community is a group of people who already know each ot
 Musicians, visual artists, photographers, poets, filmmakers, workshop organizers, event planners. They have a blog in their community hub. They post their work. People see it. If someone wants to buy their art or hire them, that conversation happens in person.
 
 **Their deal:** Real visibility with real people. No self-promotion hamster wheel. No performance metrics. Just your work, seen by people who already know your face.
+
+**The multi-community advantage:** A creator doesn't just belong to one community — they belong to all the communities they participate in. A painter who also goes to a running club, takes dance classes, and attends a poetry group is visible in all three. They don't promote themselves. They just exist in those communities, and their work is seen. They thrive simply by being a creator connected to real groups of real people.
+
+**The creator-community-venue flywheel:** This is how organic support works:
+1. A painter is a member of three communities. People in those communities see her art on her blog.
+2. Because they already know her face — they danced with her, ran with her, sat next to her at poetry night — the connection is real. They become genuine fans. Not followers. Fans.
+3. They're tempted to support her: buy her a coffee, buy a print, commission a piece. That happens between humans, off the platform.
+4. A gallery wants to exhibit her work. She posts about the exhibition on her blog.
+5. Every community she's part of lights up: "One of our members is exhibiting at Gallery X!" The running club sees it. The dance community sees it. The poetry group sees it.
+6. The gallery gets visitors who are genuinely engaged with the painter — people who know her, who care about her work, who showed up because of a real human connection.
+7. The gallery is thrilled. The painter is thrilled. The community members feel proud. Nobody paid for an ad.
+
+This is the mechanism that makes the network valuable. It doesn't work through algorithms or promotion — it works because real people in real communities naturally amplify the creative lives of people they already know.
 
 **The ultra-local influencer signal:** A creator who is part of multiple communities, who administers a community, who has real members and real interaction — that person becomes naturally visible as a community leader. Not by an algorithm. By the simple fact that real people in real communities chose to be around them. An event organizer can look at the platform and see: this woman is an artist, she's part of four communities, she administers one, she has 500 people who actually know her and like her work. Not 10,000 followers who might be bots — 500 real people who live in this city and would show up. That's the signal. That's why she gets hired.
 
