@@ -18,12 +18,11 @@
     --dark-fg: #f5f0e6;
     --dark-muted: #7a756c;
     --dark-accent: #e8a830;
-
     --light-bg: #f5f0e6;
     --light-fg: #1a1714;
     --light-muted: #8a8279;
     --light-accent: #b8432a;
-
+    --teal: #3a9e8f;
     --font-display: 'Fraunces', Georgia, serif;
     --font-body: 'DM Sans', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', monospace;
@@ -243,54 +242,6 @@
   .light .comm-text { color: var(--light-fg); }
   .dark .comm-text { color: var(--dark-fg); }
 
-  /* ---------- NOPE LIST ---------- */
-  .nopes {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 0.65rem;
-    margin-top: 2.5rem;
-  }
-
-  .nope {
-    font-family: var(--font-mono);
-    font-size: 0.82rem;
-    padding: 0.55rem 1.1rem;
-    border-radius: 100px;
-    text-decoration: line-through;
-  }
-
-  .dark .nope {
-    border: 1px solid rgba(245,240,230,0.12);
-    text-decoration-color: rgba(245,240,230,0.35);
-    color: var(--dark-muted);
-  }
-
-  .light .nope {
-    border: 1px solid rgba(26,23,20,0.12);
-    text-decoration-color: rgba(26,23,20,0.35);
-    color: var(--light-muted);
-  }
-
-  .stagger { opacity: 0; }
-
-  .reveal.visible .stagger {
-    animation: rise 0.5s ease forwards;
-  }
-
-  .stagger:nth-child(1)  { animation-delay: 0s; }
-  .stagger:nth-child(2)  { animation-delay: 0.06s; }
-  .stagger:nth-child(3)  { animation-delay: 0.12s; }
-  .stagger:nth-child(4)  { animation-delay: 0.18s; }
-  .stagger:nth-child(5)  { animation-delay: 0.24s; }
-  .stagger:nth-child(6)  { animation-delay: 0.30s; }
-  .stagger:nth-child(7)  { animation-delay: 0.36s; }
-  .stagger:nth-child(8)  { animation-delay: 0.42s; }
-
-  @keyframes rise {
-    from { opacity: 0; transform: translateY(12px); }
-    to   { opacity: 1; transform: translateY(0); }
-  }
-
   /* ---------- QUOTE ---------- */
   .quote-text {
     font-family: var(--font-display);
@@ -332,42 +283,18 @@
     transition: all 0.2s ease;
   }
 
-  .light .btn-fill {
-    background: var(--light-accent);
-    color: #fff;
-    border: 2px solid var(--light-accent);
-  }
-
-  .light .btn-fill:hover {
-    background: transparent;
-    color: var(--light-accent);
-  }
-
   .dark .btn-fill {
     background: var(--dark-accent);
     color: var(--dark-bg);
     border: 2px solid var(--dark-accent);
   }
-
-  .dark .btn-fill:hover {
-    background: transparent;
-    color: var(--dark-accent);
-  }
-
-  .light .btn-outline {
-    background: transparent;
-    color: var(--light-fg);
-    border: 2px solid rgba(26,23,20,0.18);
-  }
-
-  .light .btn-outline:hover { border-color: var(--light-fg); }
+  .dark .btn-fill:hover { background: transparent; color: var(--dark-accent); }
 
   .dark .btn-outline {
     background: transparent;
     color: var(--dark-fg);
     border: 2px solid rgba(245,240,230,0.18);
   }
-
   .dark .btn-outline:hover { border-color: var(--dark-fg); }
 
   /* ---------- FOOTER ---------- */
@@ -383,7 +310,7 @@
 
   footer a { color: var(--dark-accent); text-decoration: none; }
 
-  /* ---------- REVEAL ---------- */
+  /* ---------- REVEAL + STAGGER ---------- */
   .reveal {
     opacity: 0;
     transform: translateY(28px);
@@ -392,6 +319,799 @@
 
   .reveal.visible { opacity: 1; transform: translateY(0); }
 
+  .stagger { opacity: 0; }
+  .reveal.visible .stagger { animation: rise 0.5s ease forwards; }
+
+  .stagger:nth-child(1)  { animation-delay: 0s; }
+  .stagger:nth-child(2)  { animation-delay: 0.06s; }
+  .stagger:nth-child(3)  { animation-delay: 0.12s; }
+  .stagger:nth-child(4)  { animation-delay: 0.18s; }
+  .stagger:nth-child(5)  { animation-delay: 0.24s; }
+  .stagger:nth-child(6)  { animation-delay: 0.30s; }
+  .stagger:nth-child(7)  { animation-delay: 0.36s; }
+  .stagger:nth-child(8)  { animation-delay: 0.42s; }
+  .stagger:nth-child(9)  { animation-delay: 0.48s; }
+  .stagger:nth-child(10) { animation-delay: 0.54s; }
+
+  @keyframes rise {
+    from { opacity: 0; transform: translateY(12px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* ========================================
+     FLYWHEEL: Community Gravity
+     ======================================== */
+  .fg-communities {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+    width: 100%;
+    margin-bottom: 1.5rem;
+  }
+
+  .fg-card {
+    display: flex;
+    flex-direction: column;
+    padding: 1.1rem 1.2rem;
+    border-radius: 14px;
+    border: 1.5px solid rgba(245,240,230,0.08);
+    background: rgba(245,240,230,0.025);
+    min-width: 170px;
+    flex: 1;
+    max-width: 240px;
+    position: relative;
+    overflow: hidden;
+    transition: border-color 0.3s ease;
+  }
+
+  .fg-card:hover { border-color: rgba(232,168,48,0.25); }
+
+  .fg-card::after {
+    content: '';
+    position: absolute;
+    bottom: 0; left: 0; right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, var(--dark-accent), transparent);
+    opacity: 0.3;
+  }
+
+  .fg-card-head {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.7rem;
+  }
+
+  .fg-card-head span:first-child { font-size: 1.3rem; }
+
+  .fg-card-name {
+    font-family: var(--font-display);
+    font-size: 0.82rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    color: var(--dark-fg);
+    line-height: 1.2;
+  }
+
+  .fg-feeds { display: flex; flex-direction: column; gap: 0.35rem; }
+
+  .fg-feed {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    color: var(--dark-muted);
+  }
+
+  .fg-dot {
+    width: 5px; height: 5px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .fg-dot.ev { background: var(--dark-accent); }
+  .fg-dot.cr { background: var(--light-accent); }
+  .fg-dot.hi { background: var(--teal); }
+
+  .fg-flow {
+    display: flex;
+    justify-content: center;
+    gap: 5rem;
+    height: 40px;
+    margin-bottom: 1.5rem;
+  }
+
+  .fg-flow-line {
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(232,168,48,0.3), rgba(232,168,48,0.06));
+  }
+
+  .fg-view {
+    border-radius: 20px;
+    border: 2px solid rgba(232,168,48,0.2);
+    background: rgba(232,168,48,0.03);
+    padding: 2rem 2rem 1.5rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .fg-view::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at center top, rgba(232,168,48,0.06), transparent 70%);
+    pointer-events: none;
+  }
+
+  .fg-view-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--dark-accent);
+    text-align: center;
+    margin-bottom: 0.6rem;
+    opacity: 0.7;
+  }
+
+  .fg-view-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+    font-weight: 800;
+    font-variation-settings: "opsz" 144;
+    text-align: center;
+    color: var(--dark-fg);
+    line-height: 1.2;
+    margin-bottom: 1.5rem;
+  }
+
+  .fg-view-title em { color: var(--dark-accent); font-style: normal; }
+
+  .fg-entries { display: flex; flex-direction: column; gap: 0.7rem; }
+
+  .fg-entry {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.7rem 0.9rem;
+    border-radius: 10px;
+    background: rgba(245,240,230,0.04);
+    border: 1px solid rgba(245,240,230,0.06);
+  }
+
+  .fg-entry-icon {
+    width: 32px; height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  .fg-entry-icon.ev { background: rgba(232,168,48,0.15); border: 1px solid rgba(232,168,48,0.25); }
+  .fg-entry-icon.cr { background: rgba(184,67,42,0.12); border: 1px solid rgba(184,67,42,0.25); }
+  .fg-entry-icon.hi { background: rgba(58,158,143,0.12); border: 1px solid rgba(58,158,143,0.25); }
+
+  .fg-entry-body { flex: 1; min-width: 0; }
+  .fg-entry-title { font-size: 0.82rem; font-weight: 500; color: var(--dark-fg); line-height: 1.3; }
+  .fg-entry-meta { font-size: 0.68rem; color: var(--dark-muted); margin-top: 0.1rem; }
+
+  .fg-entry-src {
+    font-family: var(--font-mono);
+    font-size: 0.6rem;
+    color: var(--dark-muted);
+    opacity: 0.6;
+    letter-spacing: 0.04em;
+    white-space: nowrap;
+  }
+
+  .fg-mute {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-top: 1.2rem;
+    padding-top: 1rem;
+    border-top: 1px solid rgba(245,240,230,0.06);
+    justify-content: center;
+    font-size: 0.75rem;
+    color: var(--dark-muted);
+    font-style: italic;
+  }
+
+  /* ========================================
+     FLYWHEEL: Creator Amplification
+     ======================================== */
+  .fc-center { display: flex; flex-direction: column; align-items: center; margin-bottom: 2rem; }
+
+  .fc-avatar {
+    width: 80px; height: 80px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--dark-accent), var(--light-accent));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2rem;
+    margin-bottom: 0.8rem;
+    box-shadow: 0 0 40px rgba(232,168,48,0.2);
+    animation: fc-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes fc-glow {
+    0%, 100% { box-shadow: 0 0 30px rgba(232,168,48,0.15); }
+    50% { box-shadow: 0 0 60px rgba(232,168,48,0.3); }
+  }
+
+  .fc-name {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+  }
+
+  .fc-role { font-size: 0.82rem; color: var(--dark-muted); margin-top: 0.15rem; }
+
+  .fc-comms {
+    display: flex;
+    justify-content: center;
+    gap: 1.2rem;
+    flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .fc-bubble {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 1rem 0.8rem;
+    border-radius: 16px;
+    border: 1.5px solid rgba(245,240,230,0.08);
+    background: rgba(245,240,230,0.03);
+    min-width: 120px;
+    transition: border-color 0.3s ease;
+  }
+
+  .fc-bubble:hover { border-color: rgba(232,168,48,0.3); }
+  .fc-bubble-emoji { font-size: 1.4rem; }
+
+  .fc-bubble-name {
+    font-family: var(--font-display);
+    font-size: 0.78rem;
+    font-weight: 600;
+    font-variation-settings: "opsz" 48;
+    color: var(--dark-fg);
+    text-align: center;
+  }
+
+  .fc-bubble-count {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--dark-muted);
+    letter-spacing: 0.04em;
+  }
+
+  .fc-story { display: flex; flex-direction: column; gap: 1.5rem; max-width: 620px; margin: 0 auto; }
+
+  .fc-step {
+    display: flex;
+    gap: 1.2rem;
+    align-items: flex-start;
+  }
+
+  .fc-marker {
+    min-width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    margin-top: 0.1rem;
+  }
+
+  .fc-marker.amber { background: rgba(232,168,48,0.15); color: var(--dark-accent); border: 1px solid rgba(232,168,48,0.3); }
+  .fc-marker.red { background: rgba(184,67,42,0.15); color: var(--light-accent); border: 1px solid rgba(184,67,42,0.3); }
+  .fc-marker.teal { background: rgba(58,158,143,0.15); color: var(--teal); border: 1px solid rgba(58,158,143,0.3); }
+
+  .fc-step-text { font-size: 0.95rem; line-height: 1.6; color: var(--dark-muted); }
+  .fc-step-text strong { color: var(--dark-fg); font-weight: 500; }
+  .fc-step-text em { color: var(--dark-accent); font-style: normal; }
+
+  /* ========================================
+     FLYWHEEL: Subtraction Engine (light bg)
+     ======================================== */
+  .fs-compare {
+    display: grid;
+    grid-template-columns: 1fr auto 1fr;
+    gap: 0;
+    max-width: 700px;
+    width: 100%;
+    margin: 2.5rem auto 3rem;
+    align-items: start;
+  }
+
+  .fs-col-header {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    padding-bottom: 1.2rem;
+    border-bottom: 1.5px solid rgba(26,23,20,0.08);
+    margin-bottom: 1rem;
+  }
+
+  .fs-them .fs-col-header { color: var(--light-accent); }
+  .fs-us .fs-col-header { color: var(--teal); }
+  .fs-divider { width: 1px; background: rgba(26,23,20,0.06); min-height: 100%; margin: 0 1.5rem; }
+
+  .fs-row {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.55rem 0;
+  }
+
+  .fs-icon {
+    width: 24px; height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.72rem;
+    flex-shrink: 0;
+  }
+
+  .fs-icon.x { background: rgba(184,67,42,0.12); color: var(--light-accent); border: 1px solid rgba(184,67,42,0.25); }
+  .fs-icon.ok { background: rgba(58,158,143,0.12); color: var(--teal); border: 1px solid rgba(58,158,143,0.25); }
+
+  .fs-feature { font-size: 0.88rem; color: var(--light-muted); }
+  .fs-them .fs-feature { text-decoration: line-through; text-decoration-color: rgba(184,67,42,0.4); }
+  .fs-us .fs-feature { color: var(--light-fg); }
+
+  .fs-chain { max-width: 640px; margin: 0 auto; }
+
+  .fs-chain-title {
+    font-family: var(--font-display);
+    font-size: 1.3rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: var(--light-accent);
+  }
+
+  .fs-chain-step {
+    display: flex;
+    gap: 1rem;
+    align-items: flex-start;
+    margin-bottom: 0.4rem;
+  }
+
+  .fs-chain-arrow {
+    font-family: var(--font-display);
+    font-size: 1rem;
+    color: var(--light-accent);
+    min-width: 24px;
+    text-align: center;
+    padding-top: 0.15rem;
+    opacity: 0.5;
+  }
+
+  .fs-chain-text {
+    font-size: 0.92rem;
+    line-height: 1.6;
+    color: var(--light-muted);
+    padding-bottom: 0.8rem;
+    border-bottom: 1px solid rgba(26,23,20,0.04);
+  }
+
+  .fs-chain-step:last-child .fs-chain-text { border-bottom: none; }
+  .fs-chain-text strong { color: var(--light-fg); font-weight: 500; }
+  .fs-chain-text em { color: var(--light-accent); font-style: normal; }
+
+  /* ========================================
+     FLYWHEEL: Co-op Cycle (dark bg)
+     ======================================== */
+  .fo-cycle { max-width: 520px; width: 100%; margin: 2rem auto 3rem; }
+
+  .fo-step { display: flex; align-items: stretch; }
+
+  .fo-rail {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 56px;
+    flex-shrink: 0;
+  }
+
+  .fo-num {
+    width: 36px; height: 36px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-mono);
+    font-size: 0.75rem;
+    font-weight: 500;
+    flex-shrink: 0;
+    z-index: 2;
+  }
+
+  .fo-num.red { background: var(--light-accent); color: #fff; }
+  .fo-num.amber { background: var(--dark-accent); color: var(--dark-bg); }
+  .fo-num.teal { background: var(--teal); color: #fff; }
+
+  .fo-line { flex: 1; width: 2px; background: rgba(245,240,230,0.08); }
+
+  .fo-body { padding: 0.3rem 0 2rem 1rem; flex: 1; }
+
+  .fo-step-title {
+    font-family: var(--font-display);
+    font-size: 1.05rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    line-height: 1.3;
+    margin-bottom: 0.35rem;
+    color: var(--dark-fg);
+  }
+
+  .fo-step-text {
+    font-size: 0.88rem;
+    color: var(--dark-muted);
+    line-height: 1.6;
+  }
+
+  .fo-step-text strong { color: var(--dark-fg); font-weight: 500; }
+
+  .fo-loop {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    margin-top: -0.5rem;
+    padding: 1rem 0 0 0;
+  }
+
+  .fo-loop-icon {
+    width: 56px;
+    display: flex;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--dark-accent);
+    opacity: 0.4;
+  }
+
+  .fo-loop-icon svg { width: 28px; height: 28px; }
+
+  .fo-loop-text {
+    font-family: var(--font-mono);
+    font-size: 0.7rem;
+    letter-spacing: 0.06em;
+    color: var(--dark-muted);
+    font-style: italic;
+  }
+
+  .fo-classes { max-width: 520px; width: 100%; margin: 0 auto 2.5rem; }
+
+  .fo-classes-title {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    margin-bottom: 1.2rem;
+    color: var(--dark-fg);
+  }
+
+  .fo-class-row {
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid rgba(245,240,230,0.05);
+  }
+
+  .fo-class-row:last-child { border-bottom: none; }
+
+  .fo-bar { height: 6px; border-radius: 100px; flex-shrink: 0; }
+  .fo-bar.creators { width: 120px; background: var(--light-accent); }
+  .fo-bar.planners { width: 90px; background: var(--dark-accent); }
+  .fo-bar.readers { width: 60px; background: var(--teal); }
+  .fo-bar.devs { width: 30px; background: var(--dark-muted); }
+
+  .fo-class-info {
+    display: flex;
+    align-items: baseline;
+    gap: 0.5rem;
+    flex: 1;
+    min-width: 0;
+  }
+
+  .fo-class-name {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-variation-settings: "opsz" 48;
+    white-space: nowrap;
+  }
+
+  .fo-class-name.red { color: var(--light-accent); }
+  .fo-class-name.amber { color: var(--dark-accent); }
+  .fo-class-name.teal { color: var(--teal); }
+  .fo-class-name.gray { color: var(--dark-muted); }
+
+  .fo-class-meta {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: var(--dark-muted);
+    letter-spacing: 0.03em;
+  }
+
+  .fo-sentence {
+    max-width: 520px;
+    width: 100%;
+    margin: 0 auto;
+    padding: 1.5rem 1.8rem;
+    border-radius: 14px;
+    background: rgba(232,168,48,0.04);
+    border: 1.5px solid rgba(232,168,48,0.15);
+  }
+
+  .fo-sentence blockquote {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 600;
+    font-style: italic;
+    line-height: 1.5;
+    font-variation-settings: "opsz" 48;
+    color: var(--dark-fg);
+    text-align: center;
+  }
+
+  .fo-sentence .fo-sentence-sub {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 400;
+    font-style: normal;
+    color: var(--dark-muted);
+    margin-top: 0.8rem;
+    line-height: 1.55;
+    text-align: center;
+  }
+
+  /* ========================================
+     FLYWHEEL: Replication (light bg)
+     ======================================== */
+  .fr-journey {
+    max-width: 680px;
+    width: 100%;
+    margin: 2rem auto 3rem;
+    position: relative;
+  }
+
+  .fr-journey::before {
+    content: '';
+    position: absolute;
+    left: 28px;
+    top: 0; bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--light-accent), var(--dark-accent) 40%, var(--teal) 75%, rgba(58,158,143,0.2));
+  }
+
+  .fr-stage {
+    position: relative;
+    padding-left: 72px;
+    padding-bottom: 2.5rem;
+  }
+
+  .fr-stage:last-child { padding-bottom: 0; }
+
+  .fr-marker {
+    position: absolute;
+    left: 12px; top: 0;
+    width: 34px; height: 34px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1rem;
+    z-index: 2;
+  }
+
+  .fr-marker.seed { background: var(--light-accent); color: #fff; box-shadow: 0 0 0 4px var(--light-bg), 0 0 0 6px rgba(184,67,42,0.2); }
+  .fr-marker.grow { background: var(--dark-accent); color: var(--light-fg); box-shadow: 0 0 0 4px var(--light-bg), 0 0 0 6px rgba(232,168,48,0.2); }
+  .fr-marker.coop { background: var(--teal); color: #fff; box-shadow: 0 0 0 4px var(--light-bg), 0 0 0 6px rgba(58,158,143,0.2); }
+  .fr-marker.split { background: var(--light-muted); color: #fff; box-shadow: 0 0 0 4px var(--light-bg), 0 0 0 6px rgba(138,130,121,0.2); }
+
+  .fr-label {
+    font-family: var(--font-mono);
+    font-size: 0.68rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    margin-bottom: 0.4rem;
+  }
+
+  .fr-label.red { color: var(--light-accent); }
+  .fr-label.amber { color: #b8860b; }
+  .fr-label.teal { color: var(--teal); }
+  .fr-label.gray { color: var(--light-muted); }
+
+  .fr-stage-title {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    line-height: 1.3;
+    margin-bottom: 0.5rem;
+    color: var(--light-fg);
+  }
+
+  .fr-stage-text {
+    font-size: 0.9rem;
+    color: var(--light-muted);
+    line-height: 1.6;
+    max-width: 540px;
+  }
+
+  .fr-stage-text strong { color: var(--light-fg); font-weight: 500; }
+  .fr-stage-text em { color: var(--light-accent); font-style: normal; font-weight: 500; }
+
+  .fr-hubs {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+    margin-top: 0.8rem;
+  }
+
+  .fr-hub {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.35rem 0.7rem;
+    border-radius: 100px;
+    font-size: 0.72rem;
+    font-weight: 500;
+  }
+
+  .fr-hub.first { background: rgba(184,67,42,0.1); border: 1px solid rgba(184,67,42,0.25); color: var(--light-accent); }
+  .fr-hub.organic { background: rgba(232,168,48,0.1); border: 1px solid rgba(232,168,48,0.25); color: #b8860b; }
+
+  .fr-cities {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    max-width: 700px;
+    margin: 2.5rem auto 2rem;
+  }
+
+  .fr-city {
+    padding: 1.2rem 1.1rem;
+    border-radius: 14px;
+    border: 1.5px solid rgba(26,23,20,0.06);
+    background: rgba(26,23,20,0.015);
+    transition: border-color 0.3s ease, transform 0.2s ease;
+  }
+
+  .fr-city:hover { border-color: rgba(184,67,42,0.2); transform: translateY(-2px); }
+
+  .fr-city-top { display: flex; align-items: center; gap: 0.6rem; margin-bottom: 0.7rem; }
+  .fr-city-flag { font-size: 1.3rem; }
+
+  .fr-city-name {
+    font-family: var(--font-display);
+    font-size: 0.95rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    color: var(--light-fg);
+  }
+
+  .fr-city-steps { display: flex; flex-direction: column; gap: 0.35rem; }
+
+  .fr-city-step {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    font-size: 0.72rem;
+    color: var(--light-muted);
+  }
+
+  .fr-city-dot {
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  .fr-city-dot.person { background: var(--light-accent); }
+  .fr-city-dot.hubs { background: var(--dark-accent); }
+  .fr-city-dot.coop { background: var(--teal); }
+
+  .fr-started {
+    font-family: var(--font-mono);
+    font-size: 0.62rem;
+    color: var(--light-accent);
+    letter-spacing: 0.04em;
+    margin-top: 0.7rem;
+    padding-top: 0.6rem;
+    border-top: 1px solid rgba(26,23,20,0.06);
+  }
+
+  .fr-mechs {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 1rem;
+    max-width: 680px;
+    width: 100%;
+    margin: 0 auto;
+  }
+
+  .fr-mech {
+    padding: 1.2rem 1.3rem;
+    border-radius: 14px;
+    background: rgba(26,23,20,0.03);
+    border: 1px solid rgba(26,23,20,0.08);
+  }
+
+  .fr-mech h3 {
+    font-family: var(--font-display);
+    font-size: 0.92rem;
+    font-weight: 700;
+    font-variation-settings: "opsz" 48;
+    margin-bottom: 0.4rem;
+    color: var(--light-fg);
+  }
+
+  .fr-mech p { font-size: 0.85rem; color: var(--light-muted); line-height: 1.55; }
+
+  .fr-mech-ref {
+    font-family: var(--font-mono);
+    font-size: 0.65rem;
+    color: #b8860b;
+    margin-top: 0.5rem;
+    display: block;
+    letter-spacing: 0.03em;
+  }
+
+  /* ---------- SHARED: Result box ---------- */
+  .fw-result {
+    margin-top: 3rem;
+    padding: 1.5rem 2rem;
+    border-radius: 16px;
+    text-align: center;
+    max-width: 580px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .dark .fw-result { background: rgba(232,168,48,0.05); border: 1.5px solid rgba(232,168,48,0.15); }
+  .light .fw-result { background: rgba(184,67,42,0.04); border: 1.5px solid rgba(184,67,42,0.12); }
+
+  .fw-result p {
+    font-family: var(--font-display);
+    font-size: 1.1rem;
+    font-weight: 600;
+    line-height: 1.5;
+    font-variation-settings: "opsz" 48;
+  }
+
+  .dark .fw-result p { color: var(--dark-fg); }
+  .light .fw-result p { color: var(--light-fg); }
+
+  .fw-result .detail {
+    font-family: var(--font-body);
+    font-size: 0.85rem;
+    font-weight: 400;
+    margin-top: 0.6rem;
+    line-height: 1.55;
+  }
+
+  .dark .fw-result .detail { color: var(--dark-muted); }
+  .light .fw-result .detail { color: var(--light-muted); }
+
+  .fw-result.teal-border { background: rgba(58,158,143,0.06); border-color: rgba(58,158,143,0.18); }
+
   /* ---------- RESPONSIVE ---------- */
   @media (max-width: 640px) {
     .slide { padding: 3.5rem 1.5rem; }
@@ -399,9 +1119,30 @@
     .comm-icon { font-size: 1.4rem; }
     .cta-row { flex-direction: column; align-items: stretch; }
     .btn { text-align: center; }
-    .nopes { gap: 0.5rem; }
-    .nope { font-size: 0.75rem; padding: 0.45rem 0.9rem; }
     .personas { grid-template-columns: 1fr; }
+    .fg-communities { flex-direction: column; align-items: center; }
+    .fg-card { max-width: 100%; min-width: 0; }
+    .fg-flow { gap: 2rem; height: 28px; }
+    .fg-view { padding: 1.5rem 1.2rem 1.2rem; }
+    .fg-entry-src { display: none; }
+    .fc-comms { gap: 0.6rem; }
+    .fc-bubble { min-width: 90px; padding: 0.8rem 0.6rem; }
+    .fc-step { gap: 0.8rem; }
+    .fs-compare { grid-template-columns: 1fr; gap: 2rem; }
+    .fs-divider { display: none; }
+    .fo-rail { width: 44px; }
+    .fo-num { width: 30px; height: 30px; font-size: 0.68rem; }
+    .fo-body { padding-left: 0.7rem; }
+    .fo-loop-icon { width: 44px; }
+    .fo-bar.creators { width: 80px; }
+    .fo-bar.planners { width: 60px; }
+    .fo-bar.readers { width: 40px; }
+    .fo-bar.devs { width: 20px; }
+    .fr-journey::before { left: 18px; }
+    .fr-stage { padding-left: 52px; }
+    .fr-marker { left: 2px; width: 30px; height: 30px; font-size: 0.85rem; }
+    .fr-cities { grid-template-columns: 1fr; }
+    .fr-mechs { grid-template-columns: 1fr; }
   }
 </style>
 </head>
@@ -442,26 +1183,16 @@
   </div>
 </section>
 
-<!-- 03 — JOIN THROUGH YOUR COMMUNITY -->
+<!-- 03 — JOIN THROUGH YOUR COMMUNITY (merged with onboarding) -->
 <section class="slide light">
   <div class="slide-inner reveal">
     <div class="slide-num">03</div>
     <h2>You join through a community you already belong to &mdash; <span class="accent">physically.</span></h2>
-    <p class="sub">Your dance scene, your art class, your coworking space, your running club. That community hosts its events on the network. They invite you through a QR code.</p>
-    <p class="sub">Through that community, you have access to events &mdash; but you also have access to the personal blogs of the other members who felt like becoming a &ldquo;creator,&rdquo; a co-owner of the entire platform. They curate their own blog &mdash; be it poetry essays, a newsletter about flea markets, a photography portfolio.</p>
-    <p class="sub strong">All of a sudden, familiar faces give you access to their art. In one place, you've got all your events, all your communities, access to all the blogs of your fellow members. And suggestions like: a poetry club hosted by that guy from your running club who you didn't know until today writes great poetry.</p>
-  </div>
-</section>
-
-<!-- 04 — WHAT IT LOOKS LIKE -->
-<section class="slide dark">
-  <div class="slide-inner reveal">
-    <div class="slide-num">04</div>
-    <h2>Here's what it actually looks like.</h2>
+    <p class="sub">Your dance scene, your art class, your coworking space, your running club. They invite you through a QR code at an event.</p>
     <div class="comm-flow">
       <div class="comm-step stagger">
         <span class="comm-icon">&rarr;</span>
-        <p class="comm-text">You go to a Lindy Hop social on a Thursday night. Someone holds up a QR code and says the password out loud.</p>
+        <p class="comm-text">At a social, someone holds up a QR code and says the password out loud.</p>
       </div>
       <div class="comm-step stagger">
         <span class="comm-icon">&rarr;</span>
@@ -469,8 +1200,91 @@
       </div>
       <div class="comm-step stagger">
         <span class="comm-icon">&rarr;</span>
-        <p class="comm-text"><strong>You're in.</strong> A &ldquo;reader.&rdquo; No blog, no fees. That's it.</p>
+        <p class="comm-text"><strong>You're in.</strong> A &ldquo;reader.&rdquo; No blog, no fees. The whole thing runs in your browser.</p>
       </div>
+    </div>
+    <p class="sub strong">Through that community, you discover the personal blogs of other members &mdash; poetry, photography, newsletters about flea markets. And every event, all in one place.</p>
+  </div>
+</section>
+
+<!-- 04 — COMMUNITY GRAVITY: Your Calendar -->
+<section class="slide dark">
+  <div class="slide-inner reveal">
+    <div class="slide-num">04</div>
+    <h2>Your world. <span class="accent">Your calendar.</span></h2>
+    <p class="sub" style="margin-bottom:3rem;">Every community you belong to feeds into one view. Events, creators, member picks. All in one place.</p>
+
+    <div class="fg-communities">
+      <div class="fg-card stagger">
+        <div class="fg-card-head"><span>&#128131;</span><div class="fg-card-name">Lindy Hop<br>Brussels</div></div>
+        <div class="fg-feeds">
+          <div class="fg-feed"><div class="fg-dot ev"></div>3 events this week</div>
+          <div class="fg-feed"><div class="fg-dot cr"></div>12 creators sharing</div>
+        </div>
+      </div>
+      <div class="fg-card stagger">
+        <div class="fg-card-head"><span>&#127912;</span><div class="fg-card-name">Saint-Gilles<br>Art Collective</div></div>
+        <div class="fg-feeds">
+          <div class="fg-feed"><div class="fg-dot ev"></div>1 exhibition opening</div>
+          <div class="fg-feed"><div class="fg-dot cr"></div>8 creators sharing</div>
+        </div>
+      </div>
+      <div class="fg-card stagger">
+        <div class="fg-card-head"><span>&#127939;</span><div class="fg-card-name">Brussels<br>Running Club</div></div>
+        <div class="fg-feeds">
+          <div class="fg-feed"><div class="fg-dot ev"></div>2 runs scheduled</div>
+          <div class="fg-feed"><div class="fg-dot cr"></div>4 creators sharing</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="fg-flow">
+      <div class="fg-flow-line"></div>
+      <div class="fg-flow-line"></div>
+      <div class="fg-flow-line"></div>
+    </div>
+
+    <div class="fg-view">
+      <div class="fg-view-label">Your calendar</div>
+      <div class="fg-view-title">Everything that matters to <em>you</em>,<br>from every community you're part of.</div>
+      <div class="fg-entries">
+        <div class="fg-entry stagger">
+          <div class="fg-entry-icon ev">&#9670;</div>
+          <div class="fg-entry-body"><div class="fg-entry-title">Thursday Social &mdash; Lindy Hop</div><div class="fg-entry-meta">Thu 8pm &middot; Recyclart</div></div>
+          <div class="fg-entry-src">Lindy Hop</div>
+        </div>
+        <div class="fg-entry stagger">
+          <div class="fg-entry-icon cr">&#9998;</div>
+          <div class="fg-entry-body"><div class="fg-entry-title">New paintings by Clara</div><div class="fg-entry-meta">Posted today &middot; 3 new works</div></div>
+          <div class="fg-entry-src">Art Collective</div>
+        </div>
+        <div class="fg-entry stagger">
+          <div class="fg-entry-icon hi">&#10024;</div>
+          <div class="fg-entry-body"><div class="fg-entry-title">Marco recommends: Vinyl Night at Flagey</div><div class="fg-entry-meta">Fri 7pm &middot; highlighted by a member</div></div>
+          <div class="fg-entry-src">Running Club</div>
+        </div>
+        <div class="fg-entry stagger">
+          <div class="fg-entry-icon ev">&#9670;</div>
+          <div class="fg-entry-body"><div class="fg-entry-title">Exhibition opening &mdash; &ldquo;Traces&rdquo;</div><div class="fg-entry-meta">Sat 6pm &middot; Gallery Saint-Gilles</div></div>
+          <div class="fg-entry-src">Art Collective</div>
+        </div>
+        <div class="fg-entry stagger">
+          <div class="fg-entry-icon cr">&#9998;</div>
+          <div class="fg-entry-body"><div class="fg-entry-title">New poem by Thomas</div><div class="fg-entry-meta">Posted yesterday</div></div>
+          <div class="fg-entry-src">Lindy Hop</div>
+        </div>
+        <div class="fg-entry stagger">
+          <div class="fg-entry-icon hi">&#10024;</div>
+          <div class="fg-entry-body"><div class="fg-entry-title">Sarah recommends: Beginner pottery workshop</div><div class="fg-entry-meta">Next week &middot; highlighted by a member</div></div>
+          <div class="fg-entry-src">Lindy Hop</div>
+        </div>
+      </div>
+      <div class="fg-mute">&#9881; Mute what you don't want. One tap. Your view, your rules.</div>
+    </div>
+
+    <div class="fw-result" style="margin-top:2.5rem;">
+      <p>A calendar <span class="accent">designed for you</span> &mdash; by the communities you chose to be part of.</p>
+      <div class="detail">Not curated by an algorithm. Built from the communities you physically walked into and the people you actually know.</div>
     </div>
   </div>
 </section>
@@ -487,15 +1301,15 @@
       </div>
       <div class="persona stagger">
         <div class="persona-role">Creators</div>
-        <div class="persona-desc">You're a painter who also runs with a club, takes dance classes, and goes to poetry nights. You're visible in all three communities. People who already know your face see your art &mdash; and become real fans. They buy you a coffee. They buy a print. No algorithm needed. You thrive by simply being connected.</div>
+        <div class="persona-desc">You're a painter who also runs with a club, takes dance classes, and goes to poetry nights. You're visible in all three communities. People who already know your face see your art &mdash; and become real fans.</div>
       </div>
       <div class="persona stagger">
         <div class="persona-role">Event planners</div>
-        <div class="persona-desc">Your events are listed in the community calendar &mdash; the single source of truth for &ldquo;what's happening this week.&rdquo; People come for the calendar and discover the creators. You handle tickets your way.</div>
+        <div class="persona-desc">Your events are listed in the community calendar &mdash; the single source of truth for &ldquo;what's happening this week.&rdquo; People come for the calendar and discover the creators.</div>
       </div>
       <div class="persona stagger">
         <div class="persona-role">Galleries &amp; cinemas</div>
-        <div class="persona-desc">You invite a painter to exhibit. She's in three communities. Every one of them lights up: &ldquo;One of our members is exhibiting!&rdquo; Your gallery fills with visitors who already know and care about the artist. Real engagement, not ad spend.</div>
+        <div class="persona-desc">You invite a painter to exhibit. She's in three communities. Every one of them lights up: &ldquo;One of our members is exhibiting!&rdquo; Real engagement, not ad spend.</div>
       </div>
       <div class="persona stagger">
         <div class="persona-role">Workshops &amp; classes</div>
@@ -509,34 +1323,71 @@
   </div>
 </section>
 
-<!-- 06 — THE FLYWHEEL -->
+<!-- 06 — CREATOR AMPLIFICATION -->
 <section class="slide dark">
   <div class="slide-inner reveal">
     <div class="slide-num">06</div>
     <h2>How a painter fills a gallery <span class="accent">without a single ad.</span></h2>
-    <div class="comm-flow">
-      <div class="comm-step stagger">
-        <span class="comm-icon">&rarr;</span>
-        <p class="comm-text">Clara is a painter. She also takes dance classes, joins a running club, and goes to poetry nights. She's a member of all three communities.</p>
+
+    <div class="fc-center">
+      <div class="fc-avatar">&#127912;</div>
+      <div class="fc-name">Clara</div>
+      <div class="fc-role">painter &middot; dancer &middot; runner &middot; poet</div>
+    </div>
+
+    <div class="fc-comms">
+      <div class="fc-bubble stagger">
+        <div class="fc-bubble-emoji">&#128131;</div>
+        <div class="fc-bubble-name">Lindy Hop<br>Brussels</div>
+        <div class="fc-bubble-count">148 members</div>
       </div>
-      <div class="comm-step stagger">
-        <span class="comm-icon">&rarr;</span>
-        <p class="comm-text">People in those communities see her paintings on her blog. They already know her face &mdash; they've danced with her, run with her, sat next to her. They become genuine fans.</p>
+      <div class="fc-bubble stagger">
+        <div class="fc-bubble-emoji">&#127939;</div>
+        <div class="fc-bubble-name">Brussels<br>Running Club</div>
+        <div class="fc-bubble-count">92 members</div>
       </div>
-      <div class="comm-step stagger">
-        <span class="comm-icon">&rarr;</span>
-        <p class="comm-text">A gallery invites Clara to exhibit. She posts about it on her blog.</p>
-      </div>
-      <div class="comm-step stagger">
-        <span class="comm-icon">&rarr;</span>
-        <p class="comm-text">Every community she's part of lights up: <strong>&ldquo;One of our members is exhibiting at Gallery X!&rdquo;</strong> The runners see it. The dancers see it. The poetry group sees it.</p>
-      </div>
-      <div class="comm-step stagger">
-        <span class="comm-icon">&rarr;</span>
-        <p class="comm-text">The gallery fills with visitors who actually know Clara and care about her work. Not strangers who clicked an ad &mdash; real people with a real connection.</p>
+      <div class="fc-bubble stagger">
+        <div class="fc-bubble-emoji">&#9997;&#65039;</div>
+        <div class="fc-bubble-name">Ixelles<br>Poetry Night</div>
+        <div class="fc-bubble-count">64 members</div>
       </div>
     </div>
-    <p class="sub strong">This is how the network creates value. Not through algorithms &mdash; through the fact that real people in real communities naturally amplify the creative lives of people they already know.</p>
+
+    <div class="fc-story">
+      <div class="fc-step stagger">
+        <div class="fc-marker amber">1</div>
+        <div class="fc-step-text"><strong>Clara posts her paintings</strong> on her blog. Nothing else. No hashtags, no promotion, no &ldquo;check out my work.&rdquo; Just the paintings.</div>
+      </div>
+      <div class="fc-step stagger">
+        <div class="fc-marker amber">2</div>
+        <div class="fc-step-text">Everyone in her three communities sees her work. <em>304 people who already know her face.</em> The dancer she tangos with. The runner she high-fives at the finish line. The poet she sits next to.</div>
+      </div>
+      <div class="fc-step stagger">
+        <div class="fc-marker red">3</div>
+        <div class="fc-step-text"><strong>They become genuine fans.</strong> Not followers. Fans. Because they know her. Next time they see her, they say it: &ldquo;I love your last paintings.&rdquo;</div>
+      </div>
+      <div class="fc-step stagger">
+        <div class="fc-marker red">4</div>
+        <div class="fc-step-text">A gallery invites Clara to exhibit. She posts about the exhibition on her blog.</div>
+      </div>
+      <div class="fc-step stagger">
+        <div class="fc-marker teal">5</div>
+        <div class="fc-step-text"><strong>Every community lights up.</strong> The runners see it. The dancers see it. The poetry group sees it. &ldquo;One of our members is exhibiting at Gallery X!&rdquo;</div>
+      </div>
+      <div class="fc-step stagger">
+        <div class="fc-marker teal">6</div>
+        <div class="fc-step-text">The gallery fills with visitors <em>who actually care</em>. Not strangers who clicked an ad. Real people with a real connection.</div>
+      </div>
+      <div class="fc-step stagger">
+        <div class="fc-marker teal">7</div>
+        <div class="fc-step-text"><strong>The gallery is thrilled.</strong> Clara is thrilled. The community members feel proud. Nobody paid for an ad. Nobody gamed an algorithm.</div>
+      </div>
+    </div>
+
+    <div class="fw-result">
+      <p>The network creates value through <span class="accent">real human connections</span> &mdash; not algorithms.</p>
+      <div class="detail">People in real communities naturally amplify the creative lives of people they already know. That's the mechanism. That's the flywheel.</div>
+    </div>
   </div>
 </section>
 
@@ -580,43 +1431,247 @@
   </div>
 </section>
 
-<!-- 09 — UNDER THE HOOD -->
+<!-- 09 — THE SUBTRACTION ENGINE -->
 <section class="slide light">
   <div class="slide-inner reveal">
     <div class="slide-num">09</div>
-    <h2>Under the hood.</h2>
-    <p class="sub">It's just personal blogs behind a community gate, plus an event calendar. That's why it's simple enough for anyone to run &mdash; and why any city can fork it and start their own.</p>
-    <p class="sub strong">The secret sauce is the constant use of open source tools to make the social network &mdash; and the associated coop structure &mdash; easy to run, own, maintain, modify, and duplicate.</p>
+    <h2>The <span class="accent">Subtraction</span> Engine</h2>
+    <p class="sub">What you don't build is what makes it work. Every feature removed creates a cascade of simplicity.</p>
+
+    <div class="fs-compare">
+      <div class="fs-them">
+        <div class="fs-col-header">They build</div>
+        <div class="fs-row stagger"><div class="fs-icon x">&#10005;</div><div class="fs-feature">Comments &amp; threads</div></div>
+        <div class="fs-row stagger"><div class="fs-icon x">&#10005;</div><div class="fs-feature">Likes &amp; reactions</div></div>
+        <div class="fs-row stagger"><div class="fs-icon x">&#10005;</div><div class="fs-feature">Direct messages</div></div>
+        <div class="fs-row stagger"><div class="fs-icon x">&#10005;</div><div class="fs-feature">Algorithmic feeds</div></div>
+        <div class="fs-row stagger"><div class="fs-icon x">&#10005;</div><div class="fs-feature">Notification engine</div></div>
+        <div class="fs-row stagger"><div class="fs-icon x">&#10005;</div><div class="fs-feature">Follower graphs</div></div>
+        <div class="fs-row stagger"><div class="fs-icon x">&#10005;</div><div class="fs-feature">Payment processing</div></div>
+        <div class="fs-row stagger"><div class="fs-icon x">&#10005;</div><div class="fs-feature">Content moderation</div></div>
+        <div class="fs-row stagger"><div class="fs-icon x">&#10005;</div><div class="fs-feature">Abuse reporting</div></div>
+      </div>
+      <div class="fs-divider"></div>
+      <div class="fs-us">
+        <div class="fs-col-header">We build</div>
+        <div class="fs-row stagger"><div class="fs-icon ok">&#10003;</div><div class="fs-feature">Personal blogs</div></div>
+        <div class="fs-row stagger"><div class="fs-icon ok">&#10003;</div><div class="fs-feature">Community gate</div></div>
+        <div class="fs-row stagger"><div class="fs-icon ok">&#10003;</div><div class="fs-feature">Event calendar</div></div>
+        <div class="fs-row stagger"><div class="fs-icon ok">&#10003;</div><div class="fs-feature">Newsletters</div></div>
+      </div>
+    </div>
+
+    <div class="fs-chain">
+      <div class="fs-chain-title">The cascade</div>
+      <div class="fs-chain-step stagger">
+        <div class="fs-chain-arrow">&#8594;</div>
+        <div class="fs-chain-text"><strong>No comments</strong> means no comment moderation, no harassment tools, no abuse reporting, no content ranking.</div>
+      </div>
+      <div class="fs-chain-step stagger">
+        <div class="fs-chain-arrow">&#8594;</div>
+        <div class="fs-chain-text"><strong>No DMs</strong> means no spam filters, no blocking system, no encryption infrastructure, no predator detection.</div>
+      </div>
+      <div class="fs-chain-step stagger">
+        <div class="fs-chain-arrow">&#8594;</div>
+        <div class="fs-chain-text"><strong>No likes</strong> means no engagement metrics, no dopamine loops, no content ranking algorithms, no vanity economy.</div>
+      </div>
+      <div class="fs-chain-step stagger">
+        <div class="fs-chain-arrow">&#8594;</div>
+        <div class="fs-chain-text"><strong>No payments</strong> means no PCI compliance, no financial liability, no transaction disputes, no regulatory burden.</div>
+      </div>
+      <div class="fs-chain-step stagger">
+        <div class="fs-chain-arrow">&#8594;</div>
+        <div class="fs-chain-text">What's left? <em>Blogs behind a gate + an event calendar.</em> A solved problem. The entire backend complexity of a social platform disappears.</div>
+      </div>
+      <div class="fs-chain-step stagger">
+        <div class="fs-chain-arrow">&#8594;</div>
+        <div class="fs-chain-text"><strong>Simple enough that a bounty developer can build a feature in a weekend.</strong> Simple enough that any city can run it. Simple enough that it's sustainable on &euro;5/month creator fees.</div>
+      </div>
+    </div>
+
+    <div class="fw-result teal-border">
+      <p>Subtraction is the <span style="color:var(--teal);">product strategy</span>.</p>
+      <div class="detail">Every feature removed makes the platform cheaper to run, easier to fork, harder to abuse, and more focused on what actually matters: real people discovering each other's creative lives.</div>
+    </div>
   </div>
 </section>
 
-<!-- 10 — COOPERATIVE / FORKABLE -->
+<!-- 10 — THE CO-OP CYCLE -->
 <section class="slide dark">
   <div class="slide-inner reveal">
     <div class="slide-num">10</div>
     <h2>You're not a user.<br>You're a <span class="accent">co-owner.</span></h2>
-    <p class="sub">The Brussels network is the first. The code is open source. Any city can fork it and start their own.</p>
-    <p class="sub">The name gets decided by the cooperative founding members &mdash; and can be changed through a vote &mdash; because they own it.</p>
-    <p class="sub strong">The coop's decisions are managed through open source cooperative governance platforms. Making being an active member of the coop easy and rewarding.</p>
+    <p class="sub" style="margin-bottom:0.5rem;">The cooperative funds itself, governs itself, and improves itself. No investors. No ads. Just members.</p>
+
+    <div class="fo-cycle">
+      <div class="fo-step">
+        <div class="fo-rail"><div class="fo-num red">1</div><div class="fo-line"></div></div>
+        <div class="fo-body">
+          <div class="fo-step-title">Members join through their communities.</div>
+          <div class="fo-step-text">Scan a QR code, say the password. Choose reader or creator. You're in &mdash; and you're a co-owner. Your name goes on the cooperative register.</div>
+        </div>
+      </div>
+      <div class="fo-step">
+        <div class="fo-rail"><div class="fo-num red">2</div><div class="fo-line"></div></div>
+        <div class="fo-body">
+          <div class="fo-step-title">Creators pay &euro;5/month. Readers are free.</div>
+          <div class="fo-step-text">200 creators = &euro;1,000/month. That covers hosting, domains, and dev bounties. <strong>The co-op is self-funding from day one</strong> if the community is real.</div>
+        </div>
+      </div>
+      <div class="fo-step">
+        <div class="fo-rail"><div class="fo-num amber">3</div><div class="fo-line"></div></div>
+        <div class="fo-body">
+          <div class="fo-step-title">Members vote. Weighted by role.</div>
+          <div class="fo-step-text">Creators, event planners, readers, devs &mdash; each class votes with different weight. Decisions are made through open-source governance tools.</div>
+        </div>
+      </div>
+      <div class="fo-step">
+        <div class="fo-rail"><div class="fo-num amber">4</div><div class="fo-line"></div></div>
+        <div class="fo-body">
+          <div class="fo-step-title">The co-op improves the platform.</div>
+          <div class="fo-step-text">Members decide what gets built. Bounties are posted for developers. The platform gets better because the people who use it are the people who own it.</div>
+        </div>
+      </div>
+      <div class="fo-step">
+        <div class="fo-rail"><div class="fo-num teal">5</div><div class="fo-line"></div></div>
+        <div class="fo-body">
+          <div class="fo-step-title">Better platform attracts more communities.</div>
+          <div class="fo-step-text">Word spreads. More communities want in. More members means more revenue, more voices, better decisions. <strong>The cycle continues.</strong></div>
+        </div>
+      </div>
+      <div class="fo-step">
+        <div class="fo-rail"><div class="fo-num teal">6</div><div class="fo-line"></div></div>
+        <div class="fo-body">
+          <div class="fo-step-title">Every improvement benefits every member.</div>
+          <div class="fo-step-text">Because you co-own it, every feature built, every community added, every tool integrated &mdash; it all comes back to you. That's not a marketing line. It's a legal fact.</div>
+        </div>
+      </div>
+      <div class="fo-loop">
+        <div class="fo-loop-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="1 4 1 10 7 10"></polyline><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"></path></svg></div>
+        <div class="fo-loop-text">the cycle repeats &mdash; stronger each time</div>
+      </div>
+    </div>
+
+    <div class="fo-classes">
+      <div class="fo-classes-title">Voting power by class</div>
+      <div class="fo-class-row">
+        <div class="fo-bar creators"></div>
+        <div class="fo-class-info"><span class="fo-class-name red">Creators</span><span class="fo-class-meta">~40% &middot; &euro;5/mo &middot; the heart of the platform</span></div>
+      </div>
+      <div class="fo-class-row">
+        <div class="fo-bar planners"></div>
+        <div class="fo-class-info"><span class="fo-class-name amber">Event Planners</span><span class="fo-class-meta">~30% &middot; scaled fee &middot; they bring the gravity</span></div>
+      </div>
+      <div class="fo-class-row">
+        <div class="fo-bar readers"></div>
+        <div class="fo-class-info"><span class="fo-class-name teal">Readers</span><span class="fo-class-meta">~20% &middot; free &middot; the audience every creator needs</span></div>
+      </div>
+      <div class="fo-class-row">
+        <div class="fo-bar devs"></div>
+        <div class="fo-class-info"><span class="fo-class-name gray">Devs</span><span class="fo-class-meta">~10% &middot; free &middot; their contribution is the code</span></div>
+      </div>
+    </div>
+
+    <div class="fo-sentence">
+      <blockquote>&ldquo;I'm a co-owner of the social network I use.&rdquo;</blockquote>
+      <div class="fo-sentence-sub">That sentence doesn't exist anywhere else. It's a legal fact. Your name is on the register. You vote. You share in the value. CoopCycle proved this model works for delivery. This is the same model for creative communities.</div>
+    </div>
   </div>
 </section>
 
-<!-- 11 — WHAT WE DON'T BUILD -->
+<!-- 11 — REPLICATION: One Person, One City -->
 <section class="slide light">
   <div class="slide-inner reveal">
     <div class="slide-num">11</div>
-    <h2>What we <span class="accent">don't</span> build</h2>
-    <div class="nopes">
-      <span class="nope stagger">Comments</span>
-      <span class="nope stagger">Likes</span>
-      <span class="nope stagger">DMs</span>
-      <span class="nope stagger">Feeds</span>
-      <span class="nope stagger">Followers</span>
-      <span class="nope stagger">Notifications</span>
-      <span class="nope stagger">Payments</span>
-      <span class="nope stagger">Algorithms</span>
+    <h2>It always starts with <span class="accent">one person.</span></h2>
+    <p class="sub">One passionate person forks the code and starts with their own community. From there, it grows organically. Bottom up. Always.</p>
+
+    <div class="fr-journey">
+      <div class="fr-stage stagger">
+        <div class="fr-marker seed">&#9829;</div>
+        <div class="fr-label red">It starts here</div>
+        <div class="fr-stage-title">One person. One community.</div>
+        <div class="fr-stage-text">Someone who cares forks the repo. They start with <strong>the community they already belong to</strong> &mdash; the one where they know faces, show up to events, and feel at home.</div>
+        <div class="fr-hubs"><div class="fr-hub first"><span>&#128131;</span> Lindy Hop Brussels</div></div>
+      </div>
+      <div class="fr-stage stagger">
+        <div class="fr-marker grow">&#10070;</div>
+        <div class="fr-label amber">Organic growth</div>
+        <div class="fr-stage-title">Word spreads. More communities join.</div>
+        <div class="fr-stage-text">People in that first community belong to <em>other</em> communities too. They say: &ldquo;We should do this for our group.&rdquo; Each new hub starts the same way.</div>
+        <div class="fr-hubs">
+          <div class="fr-hub first"><span>&#128131;</span> Lindy Hop</div>
+          <div class="fr-hub organic"><span>&#127912;</span> Saint-Gilles Art</div>
+          <div class="fr-hub organic"><span>&#127925;</span> Jazz Community</div>
+          <div class="fr-hub organic"><span>&#127939;</span> Running Club</div>
+        </div>
+      </div>
+      <div class="fr-stage stagger">
+        <div class="fr-marker coop">&#127969;</div>
+        <div class="fr-label teal">Maturity</div>
+        <div class="fr-stage-title">Hubs mature into a city-wide cooperative.</div>
+        <div class="fr-stage-text">When enough communities are active, the members form a <strong>soci&eacute;t&eacute; coop&eacute;rative</strong>. They choose a name. They elect governance. The city now owns its own creative infrastructure.</div>
+      </div>
+      <div class="fr-stage stagger">
+        <div class="fr-marker split">&#8734;</div>
+        <div class="fr-label gray">Natural divergence</div>
+        <div class="fr-stage-title">One city, multiple co-ops. That's fine.</div>
+        <div class="fr-stage-text">Different age groups, different vibes, different neighborhoods &mdash; <strong>multiple cooperatives can coexist in the same city.</strong> Nobody decides this from the top. Fork again. Start again. The code is open.</div>
+      </div>
     </div>
-    <p class="sub" style="margin-top:2.5rem;">If you want to tell someone their work is amazing, you tell them in person. That's not a limitation &mdash; it's the entire point.</p>
+
+    <div class="fr-cities">
+      <div class="fr-city stagger">
+        <div class="fr-city-top"><div class="fr-city-flag">&#127463;&#127466;</div><div class="fr-city-name">Brussels</div></div>
+        <div class="fr-city-steps">
+          <div class="fr-city-step"><div class="fr-city-dot person"></div>Started with Lindy Hop</div>
+          <div class="fr-city-step"><div class="fr-city-dot hubs"></div>5 communities active</div>
+          <div class="fr-city-step"><div class="fr-city-dot coop"></div>SC formed, members govern</div>
+        </div>
+        <div class="fr-started">&#9829; started by Julien &mdash; dancer, shopkeeper</div>
+      </div>
+      <div class="fr-city stagger">
+        <div class="fr-city-top"><div class="fr-city-flag">&#127477;&#127481;</div><div class="fr-city-name">Lisbon</div></div>
+        <div class="fr-city-steps">
+          <div class="fr-city-step"><div class="fr-city-dot person"></div>Started with capoeira</div>
+          <div class="fr-city-step"><div class="fr-city-dot hubs"></div>3 communities growing</div>
+          <div class="fr-city-step"><div class="fr-city-dot coop"></div>Cooperative forming</div>
+        </div>
+        <div class="fr-started">&#9829; started by Ana &mdash; capoeira instructor</div>
+      </div>
+      <div class="fr-city stagger">
+        <div class="fr-city-top"><div class="fr-city-flag">&#127465;&#127466;</div><div class="fr-city-name">Berlin</div></div>
+        <div class="fr-city-steps">
+          <div class="fr-city-step"><div class="fr-city-dot person"></div>Started with gallery regulars</div>
+          <div class="fr-city-step"><div class="fr-city-dot hubs"></div>2 communities so far</div>
+          <div class="fr-city-step"><div class="fr-city-dot coop"></div>Still growing</div>
+        </div>
+        <div class="fr-started">&#9829; started by Felix &mdash; illustrator, cyclist</div>
+      </div>
+    </div>
+
+    <div class="fr-mechs">
+      <div class="fr-mech stagger">
+        <h3>Fork, don't ask</h3>
+        <p>Coopyleft license. Any cooperative or non-profit can fork and launch. No permission, no franchise fee.</p>
+        <span class="fr-mech-ref">Model: CoopCycle</span>
+      </div>
+      <div class="fr-mech stagger">
+        <h3>The handbook</h3>
+        <p>How to start, how to run, how to sustain. Written by the cities that came before you. Peer learning, not top-down instruction.</p>
+        <span class="fr-mech-ref">Model: Transition Towns</span>
+      </div>
+      <div class="fr-mech stagger">
+        <h3>Federate, don't centralize</h3>
+        <p>Each city governs itself independently. They can share decisions and templates. Or not. Nobody decides for them.</p>
+        <span class="fr-mech-ref">Model: Decidim</span>
+      </div>
+    </div>
+
+    <div class="fw-result">
+      <p>Every city starts with <span class="accent">one person who cares.</span></p>
+      <div class="detail">Not a launch strategy. Not a marketing campaign. One person who belongs to a community and says: &ldquo;I can set this up for us.&rdquo; That's the entire replication engine.</div>
+    </div>
   </div>
 </section>
 
