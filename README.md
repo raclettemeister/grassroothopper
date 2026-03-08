@@ -1,72 +1,50 @@
-# Grassroot Hopper
+# Grassroot Hopper — Cofounder Headhunter Tool
 
-**The promise of social networks — finally delivered.**
+A no-code-first inbound application funnel for finding the right technical cofounder or early founding teammate for Grassroot Hopper.
 
-A cooperative, open-source movement where any community on the planet can set up its own hub. You join through a community you already belong to — your dance scene, your art class, your dog park — scan a QR code, say a secret password spoken in person, and discover the hidden creative lives of the people you already know.
+This starter keeps two things true at once:
 
-No comments. No likes. No DMs. No algorithm. Feedback happens in real life.
+- **It should feel selective and serious to applicants**
+- **It should stay feasible for one founder to ship in days or weeks**
 
----
+## Start here
 
-## What is a Grassroot Hopper?
+1. Read [`SPEC.md`](SPEC.md) for the broader Grassroot Hopper source of truth
+2. Read [`docs/spec.md`](docs/spec.md) for the product spec
+3. Read [`docs/architecture.md`](docs/architecture.md) for the MVP and upgrade-path architecture
+4. Fill in the starter files across prompts, rubrics, legal, product, ops, and automation
 
-**A person.** Someone who blends technology with the actual pleasure of living a full life inside communities.
+## Repository starter structure
 
-**A movement.** A community of community builders, spreading city by city across Europe and beyond.
-
-**A set of products.** Open-source tools and cooperative platforms — starting with a social network for local creative communities.
-
----
-
-## How it works
-
-1. **Scan a QR code** at a community event
-2. **Say the secret password** — spoken in person, never written down
-3. **Choose: reader or creator** — readers discover, creators share their work
-4. **See only familiar faces** — every person is someone you already know
-5. **Walk up and say it** — "I love your last pictures." Real words, face to face.
-
-Technically: blogs behind a gate with an event calendar. That's the entire product.
-
----
-
-## Project structure
-
-```
-SPEC.md                  — source of truth (vision, principles, features, strategy)
-ROADMAP.md               — technical & admin timeline, subsidies, legal structure
-STATUS.md                — current project phase and key decisions
-CREATOR-SPEECH.md        — the creator pitch (café conversation)
-LAUNCH-SPEECH.md         — the reader pitch (event speech)
-website/                 — pitch deck site (static HTML, deployed to GitHub Pages)
-resources/               — research & inspiration from reference projects
-.cursor/rules/           — project context for AI-assisted development
+```text
+docs/
+  spec.md
+  architecture.md
+  prompts/
+  rubrics/
+  legal/
+product/
+  copy/
+  questions/
+ops/
+automation/
 ```
 
-## Reference models
+## Principles
 
-| Project | What we learn |
-|---------|--------------|
-| [CoopCycle](resources/coopcycle/) | Federated city-by-city co-op model, Coopyleft license |
-| [Fediverse / Bonfire](resources/fediverse/) | Modular social infrastructure, ActivityPub |
-| [Decidim](resources/decidim/) | Cooperative governance, forkable city software |
-| [Transition Towns](resources/transition-towns/) | Grassroots replication through handbooks |
-| [Creative Platforms](resources/creative-platforms/) | Resonate, Subvert, Ghost, 6AM City |
+- Transparent about what Julien brings and where he needs help
+- Advisory scoring, not machine-made truth
+- High-agency signal over polished self-presentation
+- No-code MVP first, light-code upgrade path later
+- GDPR-aware from day one
 
-## Where we are
+## Outcome
 
-Launching with the **Lindy Hop community in Brussels** — a tight group of dancers who are also painters, singers, poets, and photographers. Building the community before building the technology.
+The tool should turn awkward outbound recruiting into an inbound pipeline with:
 
-**Domains:** grassroothopper.com · grassroothopper.org · grassroothopper.eu · grassroothopper.be
+- structured applications
+- explainable scores
+- shortlist-ready notes
+- tailored interview prompts
 
-## Get involved
-
-If this made your eyes light up — you're one of us.
-
-- **Humans:** [staycreative@julien.care](mailto:staycreative@julien.care)
-- **Devs:** Open an issue or read the [SPEC](SPEC.md)
-
----
-
-*A movement by [Julien](https://julien.care) · GPFC srl · Brussels, 2026*
-*Good people, for good people.*
+*Grassroot Hopper, Brussels, 2026*
